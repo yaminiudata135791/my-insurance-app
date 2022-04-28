@@ -1,38 +1,29 @@
 package com.example.insurance.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.insurance.dto.PatientDetailsRequest;
+import com.example.insurance.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestController {
 
-    @GetMapping("banks/{bankName}")
-    public String banking(@PathVariable String bankName) {
-        switch (bankName) {
-            case "ICICI":
-                return bankNameOne();
-            case "Canara":
-                return bankNameTwo();
-            case "Union":
-                return bankNameThree();
-            default:
-                return "Bank Name not Found";
-        }
+    @Autowired
+    private TestService testService;
+
+    @GetMapping("fetch-product-details/{productName}")
+    public String myFirstMethod(@PathVariable String productName){
+        String result= testService.fetchProductDetails(productName);
+        return result;
     }
-        public String bankNameOne(){
-            return "ICICI Bank Limited is an Indian multinational bank and financial services company headquartered in Vadodara.";
-        }
-        public String bankNameTwo(){
-            return "Canara Bank is the third largest nationalised bank in India.";
-        }
-        public String bankNameThree(){
-            return "State Bank of India is an Indian multinational public sector bank and financial services statutory body headquartered in Mumbai";
-        }
+    @PostMapping("register-patient")
+    public String registerNewPatient(@RequestBody PatientDetailsRequest patientDetailsRequest){
+        return testService.registerPatient(patientDetailsRequest);
+    }
+}
 
 
-    }
 
 
 
