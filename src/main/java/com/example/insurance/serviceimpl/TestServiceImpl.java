@@ -1,5 +1,6 @@
 package com.example.insurance.serviceimpl;
 
+import com.example.insurance.dto.PatientDetailsRequest;
 import com.example.insurance.service.TestService;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +27,11 @@ public class TestServiceImpl implements TestService {
         }
 
     }
+
+    @Override
+    public String registerPatient(PatientDetailsRequest patientDetailsRequest) {
+        System.out.println(patientDetailsRequest);
+        return null;
+    }
+
 }
