@@ -5,16 +5,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
+@ToString
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
-public class PatientDetailsRequest {
+public class PatientDetailsRequest1 {
+
+    private int Id;
     private String name;
     private int age;
     private String disease;
 
 }
-
-
