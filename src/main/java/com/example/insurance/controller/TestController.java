@@ -17,6 +17,7 @@ public class TestController {
         String result= testService.fetchProductDetails(productName);
         return result;
     }
+
     @PostMapping("register-patient")
     public String registerNewPatient(@RequestBody PatientDetailsRequest patientDetailsRequest){
         return testService.registerPatient(patientDetailsRequest);
