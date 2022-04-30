@@ -2,7 +2,7 @@ package com.example.insurance.serviceimpl;
 
 import com.example.insurance.dto.PatientDetailsRequest1;
 import com.example.insurance.entity.Patient;
-import com.example.insurance.repository.PatientDAO;
+import com.example.insurance.repository.PatientDAO1;
 import com.example.insurance.repository.PatientDAO1;
 import com.example.insurance.service.TestService1;
 import org.springframework.beans.factory.annotation.Autowired;

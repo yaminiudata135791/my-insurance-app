@@ -1,6 +1,7 @@
 package com.example.insurance.serviceimpl;
 
 import com.example.insurance.dto.PatientDetailsRequest;
+import com.example.insurance.dto.UserDetailsResponse;
 import com.example.insurance.entity.Patient;
 import com.example.insurance.repository.PatientDAO;
 import com.example.insurance.service.TestService;
@@ -45,4 +46,23 @@ public class TestServiceImpl implements TestService {
         return "Patient Details saved successfully";
     }
 
+    @Override
+    public PatientDetailsRequest fetchPatientDetailsBasedOnName(String patientName) {
+
+        PatientDetailsRequest patientDetailsRequest=new PatientDetailsRequest();
+
+        Patient patient=patientDAO.findByName(patientName);
+
+        patientDetailsRequest.setId(patient.getId());
+        patientDetailsRequest.setName(patient.getName());
+        patientDetailsRequest.setAge(patient.getAge());
+        patientDetailsRequest.setDisease(patient.getDisease());
+
+        return patientDetailsRequest;
+    }
+
+    @Override
+    public String registerUsers(UserDetailsResponse userDetailsResponse) {
+        return null;
+    }
 }
