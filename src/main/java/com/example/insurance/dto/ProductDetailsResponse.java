@@ -16,6 +16,7 @@ public class ProductDetailsResponse {
         private int id;
         private String name;
         private String price;
+
         List<ProductFeedbackResponse> productFeedbackResponse;
 
 }

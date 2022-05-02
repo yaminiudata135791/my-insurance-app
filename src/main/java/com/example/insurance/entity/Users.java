@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,10 +20,17 @@ public class Users {
     @Column(name = "id")
     private int id;
 
-    private String accountNumber;
+
     private String firstName;
     private String lastName;
+    private String accountNumber;
     private String mobileNumber;
     private String emailId;
+
+    @OneToMany
+    @JoinColumn(name="accountId",referencedColumnName = "id")
+    private List<AccountDetails> accountDetails;
+
+
 
 }

@@ -14,8 +14,8 @@ import javax.persistence.Id;
 public class AccountDetails {
 
     @Id
-    private int id;
+    private int accountId;
 
-    private String accountName;
+    private String accountantName;
 
 }

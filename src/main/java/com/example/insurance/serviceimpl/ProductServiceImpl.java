@@ -1,13 +1,14 @@
 package com.example.insurance.serviceimpl;
 
-import com.example.insurance.dto.PatientDetailsRequest;
-import com.example.insurance.dto.ProductDetailsResponse;
-import com.example.insurance.dto.ProductFeedbackResponse;
+import com.example.insurance.dto.*;
 import com.example.insurance.entity.Patient;
 import com.example.insurance.entity.Product;
+import com.example.insurance.entity.Users;
 import com.example.insurance.repository.ProductDAO;
 import com.example.insurance.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -70,6 +71,38 @@ public class ProductServiceImpl implements ProductService {
 
         return productDetailsResponse;
     }
+
+    @Override
+    public ResponseEntity<BaseResponse> findProductDetails(int productId) {
+
+
+            BaseResponse baseResponse=new BaseResponse();
+            ProductDetailsResponse productDetailsResponse=new ProductDetailsResponse();
+
+            Optional<Product> product=productDAO.findById(productId);
+
+            if(!product.isPresent()){
+
+
+                baseResponse.setMessage("User ID cannot be 0 or null");
+                baseResponse.setHttpStatus(HttpStatus.NOT_FOUND);
+                baseResponse.setHttpStatusCode((HttpStatus.NOT_FOUND.value()));
+                baseResponse.setResponse(productDetailsResponse);
+
+                return new ResponseEntity<BaseResponse>(baseResponse,HttpStatus.NOT_FOUND);
+            }
+
+            Product productData=product.get();
+
+
+            productDetailsResponse.setId(productData.getId());
+            productDetailsResponse.setName(productData.getName());
+            productDetailsResponse.setPrice(productData.getPrice());
+
+
+            return new ResponseEntity<BaseResponse>(baseResponse,HttpStatus.OK);
+        }
+
 
 
 }
